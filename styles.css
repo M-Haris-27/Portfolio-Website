@@ -386,6 +386,11 @@ img {
     color: var(--primary-dark);
 }
 
+.projects-cta {
+    text-align: center;
+    margin-top: 3rem;
+}
+
 /* ===== Contact Section ===== */
 .contact {
     padding: 6rem 0;
