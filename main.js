@@ -16,16 +16,18 @@ navLinks.forEach(link => {
     });
 });
 
-// ===== Navbar Background on Scroll =====
+// ===== Navbar Scroll Effect =====
 const navbar = document.getElementById('navbar');
 
-window.addEventListener('scroll', () => {
+function handleNavbarScroll() {
     if (window.scrollY > 50) {
-        navbar.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)';
+        navbar.classList.add('scrolled');
     } else {
-        navbar.style.boxShadow = 'none';
+        navbar.classList.remove('scrolled');
     }
-});
+}
+
+window.addEventListener('scroll', handleNavbarScroll);
 
 // ===== Smooth Scroll for Navigation Links =====
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -87,22 +89,15 @@ document.querySelectorAll('.project-card, .skills-category, .contact-card, .high
     observer.observe(el);
 });
 
-// Add animation styles dynamically
-const style = document.createElement('style');
-style.textContent = `
-    .animate-element {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .animate-element.animate-in {
-        opacity: 1;
-        transform: translateY(0);
-    }
-`;
-document.head.appendChild(style);
+// ===== Typing Effect for Hero Role (Optional Enhancement) =====
+const heroRole = document.querySelector('.hero-role');
+if (heroRole) {
+    const originalText = heroRole.textContent;
+    heroRole.style.opacity = '1';
+}
 
 // ===== Initialize on DOM Load =====
 document.addEventListener('DOMContentLoaded', () => {
     highlightNavLink();
+    handleNavbarScroll();
 });
